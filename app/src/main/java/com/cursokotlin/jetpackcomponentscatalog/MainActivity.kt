@@ -1,13 +1,9 @@
 package com.cursokotlin.jetpackcomponentscatalog
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -28,6 +24,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.cursokotlin.jetpackcomponentscatalog.model.Routes
 import com.cursokotlin.jetpackcomponentscatalog.ui.CheckInfo
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
@@ -39,16 +41,6 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                    var show by remember { mutableStateOf(false) }
-                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Button(onClick = { show = true }) {
-                            Text(text = "Mostrar diálogo")
-                        }
-                        MyConfirmationDialog(
-                            show = show,
-                            onDismiss = { show = false }
-                        )
-                    }
 
                 }
             }
