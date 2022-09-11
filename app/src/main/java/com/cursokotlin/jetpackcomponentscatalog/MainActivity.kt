@@ -41,16 +41,16 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-
+                    SizeAnimation()
                 }
             }
         }
     }
 }
 
+
 @Composable
 fun MyDropDownMenu() {
-
     var selectedText by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     val desserts = listOf("Helado", "Chocolate", "Café", "Fruta", "Natillas", "Chilaquiles")
@@ -406,9 +406,8 @@ fun MyTextFieldAdvance() {
 }
 
 @Composable
-fun MyTextField() {
-    var myText by remember { mutableStateOf("Aris") }
-    TextField(value = myText, onValueChange = { myText = it })
+fun MyTextField(name: String, onValueChanged: (String) -> Unit) {
+    TextField(value = name, onValueChange = { onValueChanged(it) })
 }
 
 @Composable
