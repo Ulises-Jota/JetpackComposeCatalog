@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                    SizeAnimation()
+                    CrossfadeExampleAnimation()
                 }
             }
         }
