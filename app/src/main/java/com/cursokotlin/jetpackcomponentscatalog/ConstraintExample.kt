@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 
+@Preview
 @Composable
 fun ConstraintExample1() {
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
@@ -112,7 +113,7 @@ fun ConstraintBarrier() {
     }
 }
 
-@Preview
+//@Preview
 @Composable
 fun ConstraintChainExample(){
     ConstraintLayout(Modifier.fillMaxSize()) {
@@ -149,19 +150,3 @@ fun ConstraintChainExample(){
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,10 +1,10 @@
 package com.cursokotlin.jetpackcomponentscatalog
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.RangeSlider
-import androidx.compose.material.Slider
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.RangeSlider
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 
@@ -34,7 +34,7 @@ fun AdvanceSlider() {
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyRangeSlider() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -42,7 +42,7 @@ fun MyRangeSlider() {
         var currentRange by remember { mutableStateOf(0f..10f) }
 
         RangeSlider(
-            values = currentRange,
+            value = currentRange,
             onValueChange = { currentRange = it },
             valueRange = 0f..10f,
             steps = 9
