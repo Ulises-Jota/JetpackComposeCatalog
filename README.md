@@ -1,8 +1,19 @@
 # Catálogo de componentes de ***Jetpack Compose***
 
-### Notas tomadas del curso de Aris Guimerá, disponible en Udemy
+#### *Notas tomadas del curso de Aris Guimerá, disponible en Udemy
 
-###### Estados en *Compose*: *State property*
+### Índice
+
+- [1. Estados en *Compose*: *State property*](#1-estados-en-compose-state-property)
+- [2. Componentes de texto](#2-componentes-de-texto)
+- [3. ***State hoisting***](#3-state-hoisting)
+- [4. Componente ***Button***](#4-componente-button)
+- [5. Componente de imagen](#5-componente-de-imagen)
+- [6. Componente ***ProgressBar***](#6-componente-progressbar)
+- [7. Componentes de selección](#7-componentes-de-selección)
+- [8. Otros componentes](#8-otros-componentes)
+
+### 1. Estados en *Compose*: *State property*
 
 Se puede evitar tener que poner el ``.value`` de un estado cada vez que se lo necesita.
 
@@ -24,7 +35,7 @@ fun MySwitch() {
 }
 ````
 
-###### Componentes de texto
+### 2. Componentes de texto
 
 El componente ***TextField*** sería el equivalente al ***EditText*** en el sistema de vistas
 clásico.  
@@ -54,20 +65,20 @@ OutlinedTextField(
 )
 ````
 
-###### ***State hoisting***
+### 3. ***State hoisting***
 
 Los estados no deberían estar en los ``Composables`` (deberían ser ***stateless*** en la medida de
 lo posible).  
 Para eso, se usa un patrón llamado ***State Hoisting***, que consiste en sacar los estados de
 los ``Composables`` a un miembro superior, lo cual permite **reutilizarlo en otros componentes**.
 
-###### Componente ***Button***
+### 4. Componente ***Button***
 
 ***Button*** es el ``Composable`` que renderiza un botón. Tiene la particularidad de que debe
 implementar el ``onClick`` obligatoriamente.  
 Este componente tiene otras variantes, como el ***OutlineButton*** o el ***TextButton***.
 
-###### Componente de imagen
+### 5. Componente de imagen
 
 Se pueden visualizar todos los íconos disponibles [aquí](https://fonts.google.com/icons).  
 Pero para utilizar todos esos íconos en un proyecto, es necesario agregar la siguiente dependencia
@@ -77,13 +88,13 @@ al ``build.gradle(:app)``:
 implementation "androidx.compose.material:material-icons-extended:$compose_version"
 ````
 
-###### Componente ***ProgressBar***
+### 6. Componente ***ProgressBar***
 
 El ***ProgressBar*** se usa para dar feedback al usuario cuando la aplicación está realizando
 operaciones por detrás.  
 Hay dos tipos de indicadores: ***LinearProgressIndicator*** y ***CircularProgressIndicator***.
 
-###### Componentes de selección
+### 7. Componentes de selección
 
 ***Switch***, ***CheckBox*** y ***RadioButton***  
 Los tres componentes son similares en cuanto a que se les debe ***indicar un estado*** y la ***
@@ -91,7 +102,7 @@ acción a realizar*** cuando el estado del componente cambia.
 El ***CheckBox*** tiene la particularidad de que ***puede tener un tercer estado***, además
 de ``on`` y ``off``, llamado ``indeterminate``.
 
-###### Otros componentes
+### 8. Otros componentes
 
 ***Card*** vs ***Surface***  
 Una ***Card*** es simplemente una ***Surface*** con valores por defecto (``elevation``, ``shape``,
