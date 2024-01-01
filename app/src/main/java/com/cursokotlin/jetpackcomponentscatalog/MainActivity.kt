@@ -61,6 +61,7 @@ import com.cursokotlin.jetpackcomponentscatalog.ui.CheckInfo
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -68,13 +69,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var show by remember { mutableStateOf(false) }
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        Button(onClick = { show = true }) {
-                            Text(text = "Mostrar dialog")
-                        }
-                        MyCustomDialog(show = show, onDismiss = { show = false })
-                    }
+                    SuperHeroStickyView()
                 }
             }
         }

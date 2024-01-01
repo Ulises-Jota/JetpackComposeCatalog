@@ -12,6 +12,7 @@
 - [6. Componente ***ProgressBar***](#6-componente-progressbar)
 - [7. Componentes de selección](#7-componentes-de-selección)
 - [8. Otros componentes](#8-otros-componentes)
+- [9. ***RecyclerView*** en *Compose*](#9-recyclerview-en-compose)
 
 ### 1. Estados en *Compose*: *State property*
 
@@ -123,3 +124,15 @@ del ***Slider*** utilizando los mismos conceptos, pero permite al usuario selecc
 ***Dialogs*** y ***AlertDialogs***
 Permite mostrar un diálogo en base al diseño que se especifique.  
 El ***AlertDialog*** ya implementa por defecto un título, una descripción y dos botones.
+
+### 9. ***RecyclerView*** en *Compose*
+
+Para crear listas dinámicas se usan las funciones ``Composables`` ``LazyColumn`` (vertical) o ``LazyRow`` (horizontal).  
+Para añadir elementos a estas listas, se utilizan las funciones ``item`` o ``items`` (para más de un elemento).
+
+``LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {...}``: La función ``spacedBy`` permite agregar un espacio entre las vistas hijas del componente a través del eje principal (en este caso, vertical). Si el espacio es negativo, los hijos van a superponerse.
+
+La función ``rememberLazyListState`` crea y recuerda el estado de la lista a través de las diferentes composiciones.
+
+***Sticky headers*** **(cabeceras)**: La función ``stickyHeader`` permite agregar una cabecera que permanece fija hasta que la próxima cabecera ocupe su lugar.
+
