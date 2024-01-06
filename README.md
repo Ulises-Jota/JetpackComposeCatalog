@@ -136,3 +136,6 @@ La función ``rememberLazyListState`` crea y recuerda el estado de la lista a tr
 
 ***Sticky headers*** **(cabeceras)**: La función ``stickyHeader`` permite agregar una cabecera que permanece fija hasta que la próxima cabecera ocupe su lugar.
 
+### 9. ***Scaffold***
+
+Es un _layout_ ``Composable`` creado para montar vistas de una forma más sencilla, ya que funciona como un "esqueleto" de una pantalla que sigue la estructura propuesta por _Material Design_.
