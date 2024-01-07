@@ -13,6 +13,8 @@
 - [7. Componentes de selección](#7-componentes-de-selección)
 - [8. Otros componentes](#8-otros-componentes)
 - [9. ***RecyclerView*** en *Compose*](#9-recyclerview-en-compose)
+- [10. ***Scaffold***](#10-scaffold)
+- [11. Navegación en *Compose*](#11-navegación-en-compose)
 
 ### 1. Estados en *Compose*: *State property*
 
@@ -136,6 +138,16 @@ La función ``rememberLazyListState`` crea y recuerda el estado de la lista a tr
 
 ***Sticky headers*** **(cabeceras)**: La función ``stickyHeader`` permite agregar una cabecera que permanece fija hasta que la próxima cabecera ocupe su lugar.
 
-### 9. ***Scaffold***
+### 10. ***Scaffold***
 
 Es un _layout_ ``Composable`` creado para montar vistas de una forma más sencilla, ya que funciona como un "esqueleto" de una pantalla que sigue la estructura propuesta por _Material Design_.
+
+### 11. Navegación en *Compose*
+
+Para la navegación, se requiere de varios componentes.  
+El primero de ellos es un ``NavHostController``, que será el encargado de gestionar la navegación entre los ``Composables``. Se obtiene con la función ``rememberNavController()``.  
+Luego, hace falta un ``NavHost``, que provee el lugar en el cual se realizará la navegación. Como argumentos puede recibir, entre otros, un ``NavHostController``, un ``String`` con el ``startDestination``, un ``modifier`` y un ``builder``, usado para construir el grafo de navegación, a través de un ``NavGraphBuilder``. Todos los ``composables`` dentro de dicho grafo, se podrán navegar a través del ``NavHostController`` provisto.  
+Tanto el parámetro ``startDestination`` del ``NavHost`` como el parámetro ``route`` de cada uno de lo ``composables`` que van dentro del grafo de navegación, hacen referencia a una pantalla única dentro de la aplicación, por lo que deben ser **identificadores únicos**.  
+Cada ``composable`` contiene ese **ID único** (o **ruta**) y la pantalla correspondiente, entre otros parámetros que acepta. Si a esa pantalla se le pasa el objeto ``NavHostController`` creado previamente, luego se puede hacer uso de su función ``navigate``, la cual espera la ruta de la pantalla a la cual debe navegar dentro del grafo de navegación.  
+**_Navigation Compose_** también soporta el paso de argumentos entre destinos ``composables``. Estos argumentos pueden ser mandatorios u opcionales. Y dependiendo de eso, varía levemente la forma en que se declaran como parte de la ruta, haciendo uso de _placeholders_ (más info en la [documentación oficial](https://developer.android.com/jetpack/compose/navigation#nav-with-args)).  
+A modo de resumen: cuando se declara el ``composable`` dentro del grafo de navegación, se agrega la ruta correspondiente a la pantalla, una lista de los argumentos que espera (se arman con la función ``navArgument``) y en el ``content`` (donde se llama a la pantalla propiamente dicha), además del objeto ``NavHostController`` también se le pasa el/los argumento/s que se capturarán cuando se invoque dicha pantalla. Por otro lado, al momento de llamar a la función ``navigate`` para navegar a cierta pantalla, se le pasa por parámetro el/los argumento/s como parte de la ruta.
