@@ -15,6 +15,12 @@
 - [9. ***RecyclerView*** en *Compose*](#9-recyclerview-en-compose)
 - [10. ***Scaffold***](#10-scaffold)
 - [11. Navegación en *Compose*](#11-navegación-en-compose)
+- [12. Animaciones en *Compose*](#12-animaciones-en-compose)
+  - [Animaciones de color](#animaciones-de-color)
+  - [Animaciones de tamaño](#animaciones-de-tamaño)
+  - [Animaciones de visibilidad](#animaciones-de-visibilidad)
+  - [Animaciones de cambio de componentes](#animaciones-de-cambio-de-componentes)
+
 
 ### 1. Estados en *Compose*: *State property*
 
@@ -151,3 +157,21 @@ Tanto el parámetro ``startDestination`` del ``NavHost`` como el parámetro ``ro
 Cada ``composable`` contiene ese **ID único** (o **ruta**) y la pantalla correspondiente, entre otros parámetros que acepta. Si a esa pantalla se le pasa el objeto ``NavHostController`` creado previamente, luego se puede hacer uso de su función ``navigate``, la cual espera la ruta de la pantalla a la cual debe navegar dentro del grafo de navegación.  
 **_Navigation Compose_** también soporta el paso de argumentos entre destinos ``composables``. Estos argumentos pueden ser mandatorios u opcionales. Y dependiendo de eso, varía levemente la forma en que se declaran como parte de la ruta, haciendo uso de _placeholders_ (más info en la [documentación oficial](https://developer.android.com/jetpack/compose/navigation#nav-with-args)).  
 A modo de resumen: cuando se declara el ``composable`` dentro del grafo de navegación, se agrega la ruta correspondiente a la pantalla, una lista de los argumentos que espera (se arman con la función ``navArgument``) y en el ``content`` (donde se llama a la pantalla propiamente dicha), además del objeto ``NavHostController`` también se le pasa el/los argumento/s que se capturarán cuando se invoque dicha pantalla. Por otro lado, al momento de llamar a la función ``navigate`` para navegar a cierta pantalla, se le pasa por parámetro el/los argumento/s como parte de la ruta.
+
+### 12. Animaciones en *Compose*
+
+#### Animaciones de color
+La función ``animateColorAsState`` recibe **un color** (``targetValue``), **una animación** que se utilizará para cambiar el valor a través del tiempo (``animationSpec``), **un _listener_ opcional** que se ejecutará cuando finalice la animación (``finishedListener``) y **un ``label``** opcional para diferenciarla de otras animaciones en Android Studio.  
+Como animación se puede utilizar por ejemplo la función ``tween``. _Tweening_ en animación es una abreviatura de _inbetweening_ (interpolación) y es el proceso de generar imágenes que van entre fotogramas clave.  
+Cuando se cambia el ``targetValue`` proporcionado, la animación se ejecutará automáticamente. Si ya hay una animación en curso cuando cambia el color, la animación en curso se ajustará para animarse hacia el nuevo _target_.  
+``animateColorAsState`` devuelve un objeto ``State``. La animación actualizará continuamente el valor de dicho objeto hasta que finalice.
+
+#### Animaciones de tamaño
+Si para las animaciones de color existe la función ``animateColorAsState``, para las animaciones de tamaño está ``animateDpAsState``. Recibe los mismos parámetros, con la salvedad de que el _target_ será un tamaño en vez de un color.
+
+#### Animaciones de visibilidad
+La función ``composable`` ``AnimatedVisibility`` permite realizar animaciones de aparición/desaparición de un componente de forma simple y rápida.  
+Entre los parámetros que recibe, tiene un ``enter`` y un ``exit``, que pueden sobreescribirse a gusto para lograr el efecto de animación deseado. Y en ``content``, irá el objeto que se quiere mostrar/ocultar.
+
+#### Animaciones de cambio de componentes
+La función ``composable`` ``Crossfade`` permite cambiar entre dos componentes con una animación de fundido encadenado. Cada vez que cambia el estado del argumento ``targetState``, se dispara la animación, ocultando el componente "viejo" y mostrando el componente "nuevo".
