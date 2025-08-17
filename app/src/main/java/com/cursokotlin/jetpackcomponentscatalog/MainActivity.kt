@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AdvanceSliderV2()
+                    ExposedDrowDownMenuCustom()
                 }
             }
         }
