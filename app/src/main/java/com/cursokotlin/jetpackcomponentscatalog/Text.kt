@@ -30,9 +30,9 @@ fun MyTextFieldOutlined() {
         onValueChange = { myText = it },
         modifier = Modifier.padding(24.dp),
         label = { Text(text = "Example") },
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = Color.Magenta,
-            unfocusedBorderColor = Color.Blue
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.Magenta,
+            unfocusedContainerColor = Color.Blue
         )
     )
 }

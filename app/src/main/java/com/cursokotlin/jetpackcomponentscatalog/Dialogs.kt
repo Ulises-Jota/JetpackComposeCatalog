@@ -1,28 +1,29 @@
 package com.cursokotlin.jetpackcomponentscatalog
 
-import androidx.annotation.DrawableRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.cursokotlin.jetpackcomponentscatalog.utils.AccountItem
+import com.cursokotlin.jetpackcomponentscatalog.utils.MyRadioButtonList
 
 @Composable
 fun MyConfirmationDialog(
@@ -37,10 +38,10 @@ fun MyConfirmationDialog(
                     .background(Color.White)
             ) {
                 MyTitleDialog(text = "Phone ringtone", modifier = Modifier.padding(24.dp))
-                Divider(Modifier.fillMaxWidth(), 4.dp, Color.LightGray)
+                HorizontalDivider(Modifier.fillMaxWidth(), 4.dp, Color.LightGray)
                 var status by remember { mutableStateOf("") }
-                MyRadioButtonList(status) {status = it}
-                Divider(Modifier.fillMaxWidth(), 4.dp, Color.LightGray)
+                MyRadioButtonList(status) { status = it }
+                HorizontalDivider(Modifier.fillMaxWidth(), 4.dp, Color.LightGray)
                 Row(Modifier.align(Alignment.End).padding(8.dp)) {
                     TextButton(onClick = {  }) {
                         Text(text = "CANCEL")
@@ -122,24 +123,6 @@ fun MyAlertDialog(
             }
         )
     }
-}
-
-@Composable
-fun AccountItem(email: String, @DrawableRes drawable: Int) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Image(
-            painter = painterResource(id = drawable),
-            contentDescription = "avatar",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .padding(8.dp)
-                .size(40.dp)
-                .clip(CircleShape)
-        )
-
-        Text(text = email, fontSize = 14.sp, color = Color.Gray, modifier = Modifier.padding(8.dp))
-    }
-
 }
 
 @Composable

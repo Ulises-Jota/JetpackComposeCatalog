@@ -32,6 +32,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.cursokotlin.jetpackcomponentscatalog.utils.ItemHero
+import com.cursokotlin.jetpackcomponentscatalog.utils.getSuperheroes
 import com.cursokotlin.jetpackcomponentscatalog.model.Superhero
 import kotlinx.coroutines.launch
 
@@ -140,52 +142,5 @@ fun SuperHeroGridView() {
             }
         },
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-    )
-}
-
-@Composable
-fun ItemHero(superhero: Superhero, onItemSelected: (Superhero) -> Unit) {
-    Card(
-        border = BorderStroke(2.dp, Color.Red),
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemSelected(superhero) }) {
-        Column {
-            Image(
-                painter = painterResource(id = superhero.photo),
-                contentDescription = "SuperHero Avatar",
-                modifier = Modifier.fillMaxWidth(),
-                contentScale = ContentScale.Crop
-            )
-            Text(
-                text = superhero.superheroName,
-                modifier = Modifier.align(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = superhero.realName,
-                modifier = Modifier.align(Alignment.CenterHorizontally),
-                fontSize = 12.sp
-            )
-            Text(
-                text = superhero.publisher,
-                fontSize = 10.sp,
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(8.dp)
-            )
-        }
-
-    }
-}
-
-fun getSuperheroes(): List<Superhero> {
-    return listOf(
-        Superhero("Spiderman", "Petter Parker", "Marvel", R.drawable.spiderman),
-        Superhero("Wolverine", "James Howlett", "Marvel", R.drawable.logan),
-        Superhero("Batman", "Bruce Wayne", "DC", R.drawable.batman),
-        Superhero("Thor", "Thor Odinson", "Marvel", R.drawable.thor),
-        Superhero("Flash", "Jay Garrick", "DC", R.drawable.flash),
-        Superhero("Green Lantern", "Alan Scott", "DC", R.drawable.green_lantern),
-        Superhero("Wonder Woman", "Princess Diana", "DC", R.drawable.wonder_woman)
     )
 }

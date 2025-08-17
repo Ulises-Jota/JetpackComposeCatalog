@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomponentscatalog.ui
+package com.cursokotlin.jetpackcomponentscatalog.utils
 
 data class CheckInfo(
     val title: String,

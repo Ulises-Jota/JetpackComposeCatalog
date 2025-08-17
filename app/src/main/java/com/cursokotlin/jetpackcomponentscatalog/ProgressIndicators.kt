@@ -28,7 +28,7 @@ fun MyProgressAdvance() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LinearProgressIndicator(progress = progressStatus)
+        LinearProgressIndicator(progress = { progressStatus })
 
         Row(Modifier.fillMaxWidth()) {
             Button(onClick = { progressStatus += 0.1f }) {

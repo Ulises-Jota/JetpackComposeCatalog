@@ -29,7 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import kotlin.random.Random.Default.nextInt
+import com.cursokotlin.jetpackcomponentscatalog.utils.ComponentType
+import com.cursokotlin.jetpackcomponentscatalog.utils.getComponentTypeRandom
 
 @Composable
 fun ColorAnimationSimple() {
@@ -133,17 +134,4 @@ fun CrossfadeExampleAnimation() {
             }
         }
     }
-}
-
-fun getComponentTypeRandom(): ComponentType {
-    return when (nextInt(from = 0, until = 3)) {
-        0 -> ComponentType.Image
-        1 -> ComponentType.Text
-        2 -> ComponentType.Box
-        else -> ComponentType.Error
-    }
-}
-
-enum class ComponentType() {
-    Image, Text, Box, Error
 }
