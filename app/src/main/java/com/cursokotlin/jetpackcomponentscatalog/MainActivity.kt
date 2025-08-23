@@ -6,6 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +21,10 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ExposedDrowDownMenuCustom()
+                    var showDialog by rememberSaveable { mutableStateOf(true) }
+                    MyCustomDialog(showDialog = showDialog) {
+                        showDialog = false
+                    }
                 }
             }
         }
