@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     var showDialog by rememberSaveable { mutableStateOf(true) }
-                    MyDerivedStateOf()
+                    MyScrollList()
                 }
             }
         }
