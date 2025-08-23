@@ -22,9 +22,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     var showDialog by rememberSaveable { mutableStateOf(true) }
-                    MyCustomDialog(showDialog = showDialog) {
-                        showDialog = false
-                    }
+                    MyDerivedStateOf()
                 }
             }
         }

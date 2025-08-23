@@ -20,6 +20,7 @@
   - [Animaciones de tamaño](#animaciones-de-tamaño)
   - [Animaciones de visibilidad](#animaciones-de-visibilidad)
   - [Animaciones de cambio de componentes](#animaciones-de-cambio-de-componentes)
+- [13. _InteractionSource_](#13-_interactionsource_)
 
 
 ### 1. Estados en *Compose*: *State property*
@@ -175,3 +176,15 @@ Entre los parámetros que recibe, tiene un ``enter`` y un ``exit``, que pueden s
 
 #### Animaciones de cambio de componentes
 La función ``composable`` ``Crossfade`` permite cambiar entre dos componentes con una animación de fundido encadenado. Cada vez que cambia el estado del argumento ``targetState``, se dispara la animación, ocultando el componente "viejo" y mostrando el componente "nuevo".
+
+### 13. _InteractionSource_
+Permite **conocer el estado transitorio de un ``composable``** (presionado, arrastrado, en foco, _hovered_).  
+Por ejemplo, para saber si un componente está siendo presionado, se puede usar ``MutableInteractionSource`` de esta forma: 
+
+```kotlin
+val interaction = remember { MutableInteractionSource() }
+val isPressed by interaction.collectIsPressedAsState()
+Text(
+  if (isPressed) "Pulsado" else "Sin pulsar"
+)
+```
