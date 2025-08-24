@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomponentscatalog.model
+package com.cursokotlin.jetpackcomponentscatalog.navigation
 
 sealed class Routes(val route: String) {
     object Pantalla1 : Routes("pantalla1")

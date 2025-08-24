@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomponentscatalog
+package com.cursokotlin.jetpackcomponentscatalog.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
@@ -16,13 +16,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.cursokotlin.jetpackcomponentscatalog.model.Routes
 import com.cursokotlin.jetpackcomponentscatalog.model.Routes.Pantalla2
 import com.cursokotlin.jetpackcomponentscatalog.model.Routes.Pantalla3
 
 @ExperimentalFoundationApi
 @Composable
-fun NavigationComplete() {
+fun NavigationV1() {
     val navigationController = rememberNavController()
     NavHost(
         navController = navigationController,

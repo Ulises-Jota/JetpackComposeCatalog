@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import com.cursokotlin.jetpackcomponentscatalog.navigation.NavigationHandler
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     var showDialog by rememberSaveable { mutableStateOf(true) }
-                    MyScrollList()
+                    NavigationHandler()
                 }
             }
         }
