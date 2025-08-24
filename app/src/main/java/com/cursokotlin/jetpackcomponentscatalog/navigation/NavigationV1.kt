@@ -16,8 +16,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.cursokotlin.jetpackcomponentscatalog.model.Routes.Pantalla2
-import com.cursokotlin.jetpackcomponentscatalog.model.Routes.Pantalla3
+import com.cursokotlin.jetpackcomponentscatalog.navigation.Routes.Pantalla1
+import com.cursokotlin.jetpackcomponentscatalog.navigation.Routes.Pantalla2
+import com.cursokotlin.jetpackcomponentscatalog.navigation.Routes.Pantalla3
+import com.cursokotlin.jetpackcomponentscatalog.navigation.Routes.Pantalla4
+import com.cursokotlin.jetpackcomponentscatalog.navigation.Routes.Pantalla5
 
 @ExperimentalFoundationApi
 @Composable
@@ -25,10 +28,10 @@ fun NavigationV1() {
     val navigationController = rememberNavController()
     NavHost(
         navController = navigationController,
-        startDestination = Routes.Pantalla1.route
+        startDestination = Pantalla1.route
     ) {
         composable(
-            Routes.Pantalla1.route
+            Pantalla1.route
         ) {
             Screen1(navigationController)
         }
@@ -43,7 +46,7 @@ fun NavigationV1() {
             Screen3(navigationController)
         }
         composable(
-            Routes.Pantalla4.route,
+            Pantalla4.route,
             arguments = listOf(navArgument("age") { type = NavType.IntType })
         ) { backStackEntry ->
             Screen4(
@@ -52,7 +55,7 @@ fun NavigationV1() {
             )
         }
         composable(
-            Routes.Pantalla5.route,
+            Pantalla5.route,
             arguments = listOf(navArgument("name") { defaultValue = "Pepe" })
         ) { backStackEntry ->
             Screen5(
@@ -107,7 +110,7 @@ fun Screen3(navController: NavHostController) {
             text = "Pantalla 3",
             modifier = Modifier
                 .align(Alignment.Center)
-                .clickable { navController.navigate(Routes.Pantalla4.createRoute(38)) })
+                .clickable { navController.navigate(Pantalla4.createRoute(38)) })
     }
 }
 
@@ -122,7 +125,7 @@ fun Screen4(navController: NavHostController, age: Int) {
             .align(Alignment.Center)
             .clickable {
                 navController.navigate(
-                    Routes.Pantalla5.createRoute("Javi")
+                    Pantalla5.createRoute("Javi")
                 )
             })
     }
