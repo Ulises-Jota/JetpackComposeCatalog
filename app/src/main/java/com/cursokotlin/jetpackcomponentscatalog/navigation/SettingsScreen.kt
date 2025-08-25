@@ -13,15 +13,23 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginScreen(navigateToDetail: () -> Unit) {
-    Column(Modifier.fillMaxSize().background(Color.Blue), horizontalAlignment = Alignment.CenterHorizontally) {
+fun SettingsScreen(settingsModel: SettingsModel, navigateToHome: () -> Unit) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Color.Blue),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Spacer(Modifier.weight(1f))
-        Text(text = "Login", fontSize = 30.sp)
+        Text(
+            text = "Settings: id: ${settingsModel.id}, darkModeEnabled: ${settingsModel.isDarkMode}",
+            fontSize = 30.sp
+        )
         Spacer(Modifier.weight(1f))
         Button(
-            onClick = navigateToDetail
+            onClick = navigateToHome
         ) {
-            Text("Navegar")
+            Text("Volver al inicio")
         }
         Spacer(Modifier.weight(1f))
     }

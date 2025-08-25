@@ -13,15 +13,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginScreen(navigateToDetail: () -> Unit) {
-    Column(Modifier.fillMaxSize().background(Color.Blue), horizontalAlignment = Alignment.CenterHorizontally) {
+fun DetailScreen(id: String, navigateToSettings: (SettingsModel) -> Unit) {
+    val settingsModel = SettingsModel("JAVI", true)
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Color.Red),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Spacer(Modifier.weight(1f))
-        Text(text = "Login", fontSize = 30.sp)
+        Text(text = "Detail: $id", fontSize = 30.sp)
         Spacer(Modifier.weight(1f))
         Button(
-            onClick = navigateToDetail
+            onClick = { navigateToSettings(settingsModel) }
         ) {
-            Text("Navegar")
+            Text("Ir a ajustes")
         }
         Spacer(Modifier.weight(1f))
     }
