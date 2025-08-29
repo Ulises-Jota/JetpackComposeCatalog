@@ -3,13 +3,16 @@ package com.cursokotlin.jetpackcomponentscatalog
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.cursokotlin.jetpackcomponentscatalog.navigation.NavigationHandler
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
@@ -17,14 +20,31 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
+            val snackbarHostState = remember { SnackbarHostState() }
+            val coroutineScope = rememberCoroutineScope()
+
             JetpackComponentsCatalogTheme {
-                Surface(
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    var showDialog by rememberSaveable { mutableStateOf(true) }
-                    NavigationHandler()
-                }
+                Scaffold(
+                    snackbarHost = {
+                        SnackbarHost(
+                            modifier = Modifier
+                                .padding(bottom = 16.dp),
+                            hostState = snackbarHostState,
+                        ) {
+                            CustomSnackbar(snackbarHostState.currentSnackbarData?.visuals?.message)
+                        }
+                    },
+                    // Los paddingValues reflejan el espacio ocupado por topBar, bottomBar u otras barras del Scaffold.
+                    // Si no se define ninguna barra, los valores de padding serán 0.dp.
+                    content = { paddingValues ->
+                        NavigationHandler(
+                            snackbarHostState = snackbarHostState,
+                            coroutineScope = coroutineScope
+                        )
+                    }
+                )
             }
         }
     }

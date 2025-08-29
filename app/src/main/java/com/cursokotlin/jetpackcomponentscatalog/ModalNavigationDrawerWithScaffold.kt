@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun ScaffoldExample() {
+fun ModalNavigationDrawerWithScaffold() {
     val snackbarHostState = remember { SnackbarHostState() }
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val coroutineScope = rememberCoroutineScope()
@@ -43,8 +43,8 @@ fun ScaffoldExample() {
         content = {
             Scaffold(
                 snackbarHost = { SnackbarHost(snackbarHostState) },
-                // El paddingValues sólo se proporcionará si la propiedad bottomBar del Scaffold está configurada.
-                // De lo contrario, devolverá 0dp.
+                // Los paddingValues reflejan el espacio ocupado por topBar, bottomBar u otras barras del Scaffold.
+                // Si no se define ninguna barra, los valores de padding serán 0.dp.
                 content = { paddingValues ->
                     Log.d("paddingValues", "$paddingValues")
                     Column(

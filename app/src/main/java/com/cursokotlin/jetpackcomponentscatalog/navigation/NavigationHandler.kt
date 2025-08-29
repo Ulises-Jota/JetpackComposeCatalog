@@ -1,15 +1,20 @@
 package com.cursokotlin.jetpackcomponentscatalog.navigation
 
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.cursokotlin.jetpackcomponentscatalog.navigation.types.createNavType
+import kotlinx.coroutines.CoroutineScope
 import kotlin.reflect.typeOf
 
 @Composable
-fun NavigationHandler() {
+fun NavigationHandler(
+    snackbarHostState: SnackbarHostState,
+    coroutineScope: CoroutineScope
+) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -17,7 +22,9 @@ fun NavigationHandler() {
     ) {
         composable<Login> {
             LoginScreen(
-                navigateToDetail = { navController.navigate(Home) }
+                navigateToDetail = { navController.navigate(Home) },
+                snackbarHostState = snackbarHostState,
+                coroutineScope = coroutineScope,
             )
         }
 
