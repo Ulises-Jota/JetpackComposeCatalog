@@ -20,7 +20,7 @@
   - [Animaciones de visibilidad](#animaciones-de-visibilidad)
   - [Animaciones de cambio de componentes](#animaciones-de-cambio-de-componentes)
   - [Animaciones de contenido](#animaciones-de-contenido)
-  - [_InfiniteTransition_](#_infinitetransition_)
+  - [_InfiniteTransition_](#infinitetransition)
 - [13. _InteractionSource_](#13-_interactionsource_)
 
 
