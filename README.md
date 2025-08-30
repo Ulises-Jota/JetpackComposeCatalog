@@ -16,10 +16,11 @@
 - [10. ***Scaffold***](#10-scaffold)
 - [11. Navegación en *Compose*](#11-navegación-en-compose)
 - [12. Animaciones en *Compose*](#12-animaciones-en-compose)
-  - [Animaciones de color](#animaciones-de-color)
-  - [Animaciones de tamaño](#animaciones-de-tamaño)
+  - [Animaciones *as state*](#animaciones-as-state)
   - [Animaciones de visibilidad](#animaciones-de-visibilidad)
   - [Animaciones de cambio de componentes](#animaciones-de-cambio-de-componentes)
+  - [Animaciones de contenido](#animaciones-de-contenido)
+  - [_InfiniteTransition_](#_infinitetransition_)
 - [13. _InteractionSource_](#13-_interactionsource_)
 
 
@@ -166,14 +167,13 @@ Por otro lado, si bien Google no lo recomienda, también es posible pasar datos 
 
 ### 12. Animaciones en *Compose*
 
-#### Animaciones de color
+#### Animaciones *as state*
 La función ``animateColorAsState`` recibe **un color** (``targetValue``), **una animación** que se utilizará para cambiar el valor a través del tiempo (``animationSpec``), **un _listener_ opcional** que se ejecutará cuando finalice la animación (``finishedListener``) y **un ``label``** opcional para diferenciarla de otras animaciones en Android Studio.  
 Como animación se puede utilizar por ejemplo la función ``tween``. _Tweening_ en animación es una abreviatura de _inbetweening_ (interpolación) y es el proceso de generar imágenes que van entre fotogramas clave.  
 Cuando se cambia el ``targetValue`` proporcionado, la animación se ejecutará automáticamente. Si ya hay una animación en curso cuando cambia el color, la animación en curso se ajustará para animarse hacia el nuevo _target_.  
-``animateColorAsState`` devuelve un objeto ``State``. La animación actualizará continuamente el valor de dicho objeto hasta que finalice.
-
-#### Animaciones de tamaño
-Si para las animaciones de color existe la función ``animateColorAsState``, para las animaciones de tamaño está ``animateDpAsState``. Recibe los mismos parámetros, con la salvedad de que el _target_ será un tamaño en vez de un color.
+``animateColorAsState`` devuelve un objeto ``State``. La animación actualizará continuamente el valor de dicho objeto hasta que finalice.  
+Si para las animaciones de color existe la función ``animateColorAsState``, para las animaciones de tamaño está ``animateDpAsState``. Recibe los mismos parámetros, con la salvedad de que el _target_ será un tamaño en vez de un color.  
+A modo informativo, también existen las funciones ``animateOffsetAsState`` y ``animateFloatAsState``.
 
 #### Animaciones de visibilidad
 La función ``composable`` ``AnimatedVisibility`` permite realizar animaciones de aparición/desaparición de un componente de forma simple y rápida.  
@@ -181,6 +181,14 @@ Entre los parámetros que recibe, tiene un ``enter`` y un ``exit``, que pueden s
 
 #### Animaciones de cambio de componentes
 La función ``composable`` ``Crossfade`` permite cambiar entre dos componentes con una animación de fundido encadenado. Cada vez que cambia el estado del argumento ``targetState``, se dispara la animación, ocultando el componente "viejo" y mostrando el componente "nuevo".
+
+#### Animaciones de contenido
+En este apartado se pueden mencionar al componente ``AnimatedContent`` y al modificador ``animateContentSize``: 
+- ``AnimatedContent``: Un contenedor que anima automáticamente su contenido cuando cambia ``targetState``. Su ``content`` para diferentes _target states_ se define en un mapeo entre un _target state_ y una función ``composable``.
+- ``animateContentSize``: Anima su propio tamaño cuando su modificador hijo (o el elemento ``composable`` hijo si ya está al final de la cadena) cambia de tamaño. Esto permite que el modificador padre observe un cambio de tamaño suave, lo que resulta en un cambio visual continuo.
+
+#### _InfiniteTransition_
+La función ``rememberInfiniteTransition()`` permite obtener un objeto de tipo ``InfiniteTransition``, el cual se encarga de ejecutar las animaciones secundarias o hijas. Estas animaciones se pueden agregar mediante ``InfiniteTransition.animateColor``, ``InfiniteTransition.animateFloat`` o ``InfiniteTransition.animateValue``. Las animaciones secundarias comenzarán a ejecutarse en cuanto entren en la composición y no se detendrán hasta que se eliminen de ella.
 
 ### 13. _InteractionSource_
 Permite **conocer el estado transitorio de un ``composable``** (presionado, arrastrado, en foco, _hovered_).  

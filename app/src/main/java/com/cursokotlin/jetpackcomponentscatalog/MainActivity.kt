@@ -1,5 +1,6 @@
 package com.cursokotlin.jetpackcomponentscatalog
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,10 +14,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.cursokotlin.jetpackcomponentscatalog.navigation.NavigationHandler
+import com.cursokotlin.jetpackcomponentscatalog.animations.InfiniteTransitionExample
 import com.cursokotlin.jetpackcomponentscatalog.ui.theme.JetpackComponentsCatalogTheme
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +41,7 @@ class MainActivity : ComponentActivity() {
                     // Los paddingValues reflejan el espacio ocupado por topBar, bottomBar u otras barras del Scaffold.
                     // Si no se define ninguna barra, los valores de padding serán 0.dp.
                     content = { paddingValues ->
-                        NavigationHandler(
-                            snackbarHostState = snackbarHostState,
-                            coroutineScope = coroutineScope
-                        )
+                        InfiniteTransitionExample(paddingValues)
                     }
                 )
             }

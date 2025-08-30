@@ -1,4 +1,4 @@
-package com.cursokotlin.jetpackcomponentscatalog
+package com.cursokotlin.jetpackcomponentscatalog.sideeffects
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
