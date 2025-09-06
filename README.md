@@ -1,6 +1,6 @@
 # Catálogo de componentes de ***Jetpack Compose***
 
-#### *Notas tomadas del curso de Aris Guimerá, disponible en Udemy
+#### *Notas tomadas del curso de Aris Guimerá, disponible en [Udemy](https://www.udemy.com/course/jetpack-compose-desde-0-a-profesional/)
 
 ### Índice
 
